@@ -29,5 +29,31 @@
 </ul>
 <h2>成长记录</h2>
 <p>2026-04-07：开始做个人网站</p>
+<section>
+  <h2>📅 每日记录</h2>
+  <div id="records"></div>
+</section>
+<script>
+fetch('data.json')
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById('records');
+
+    data.forEach(item => {
+      const div = document.createElement('div');
+
+      div.innerHTML = `
+        <h3>${item.date}</h3>
+        <p>🍚 饮食：${item.food}</p>
+        <p>😴 睡眠：${item.sleep}</p>
+        <p>💪 状态：${item.status}</p>
+        <p>🧠 学习：${item.study}</p>
+        <hr>
+      `;
+
+      container.appendChild(div);
+    });
+  });
+</script>
 </body>
 </html>
